@@ -37,10 +37,10 @@ public class Seeding implements ApplicationRunner {
         enderecoRepository.save(endereco1);
         enderecoRepository.save(endereco2);
 
-        Restaurante restaurante1 = new Restaurante("Sukiya"," Rua Joãozinho, 1060 São Paulo" ,"sukiyarestaurante@sukiya.com", "123456");
+        Restaurante restaurante1 = new Restaurante("Sukiya","urlImagem","Sukiya é um restaurante de comida japonesa","Rua Joãozinho, 1060 São Paulo" ,"sukiyarestaurante@sukiya.com", "123456");
         restauranteRepository.save(restaurante1);
-        Prato prato1 = new Prato("Katsu Curry", "A típica comida caseira do japão, levemente apimentado e acompanhado com nosso crocante chicken katsu (sobrecoxa empanada) e arroz japonês.", 34.90, restaurante1);
-        Prato prato2 = new Prato("Bento Sukiya", "Teishoku de Tonkatsu (lombo de porco), arroz japonês, karaguê frito, gyoza.", 36.33 , restaurante1);
+        Prato prato1 = new Prato("Katsu Curry","urlImagem" ,"A típica comida caseira do japão, levemente apimentado e acompanhado com nosso crocante chicken katsu (sobrecoxa empanada) e arroz japonês.", 34.90, restaurante1);
+        Prato prato2 = new Prato("Bento Sukiya", "urlImagem" ,"Teishoku de Tonkatsu (lombo de porco), arroz japonês, karaguê frito, gyoza.", 36.33 , restaurante1);
         pratoRepository.save(prato1);
         pratoRepository.save(prato2);
     }

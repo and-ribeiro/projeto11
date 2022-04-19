@@ -11,6 +11,7 @@ public class Prato {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
+    private String imagem;
     private String descricao;
     private Double preco;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -20,16 +21,18 @@ public class Prato {
 
     public Prato() {}
 
-    public Prato(Integer id, String nome, String descricao, Double preco, Restaurante restaurante) {
+    public Prato(Integer id, String nome, String imagem , String descricao, Double preco, Restaurante restaurante) {
         this.id = id;
         this.nome = nome;
+        this.imagem = imagem;
         this.descricao = descricao;
         this.preco = preco;
         this.restaurante = restaurante;
     }
 
-    public Prato(String nome, String descricao, Double preco, Restaurante restaurante) {
+    public Prato(String nome, String imagem , String descricao, Double preco, Restaurante restaurante) {
         this.nome = nome;
+        this.imagem = imagem;
         this.descricao = descricao;
         this.preco = preco;
         this.restaurante = restaurante;
@@ -50,6 +53,10 @@ public class Prato {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public String getImagem() {return imagem;}
+
+    public void setImagem(String imagem) {this.imagem = imagem;}
 
     public String getDescricao() {
         return descricao;

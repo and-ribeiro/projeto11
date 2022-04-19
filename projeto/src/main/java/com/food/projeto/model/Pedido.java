@@ -1,7 +1,11 @@
 package com.food.projeto.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -10,24 +14,23 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nome;
     @OneToMany
-    private Set<Prato> pratos = new HashSet<>();
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    private Set<Prato> pratospedido = new HashSet<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    @JsonBackReference
     private Usuario usuario;
 
-    public Pedido() {
-    }
+    public Pedido(){}
 
-    public Pedido(Integer id, String nome, Usuario usuario) {
+    public Pedido(Integer id, Set<Prato> pratospedido, Usuario usuario) {
         this.id = id;
-        this.nome = nome;
+        this.pratospedido = pratospedido;
         this.usuario = usuario;
     }
 
-    public Pedido(String nome, Usuario usuario) {
-        this.nome = nome;
+    public Pedido(Set<Prato> pratospedido, Usuario usuario) {
+        this.pratospedido = pratospedido;
         this.usuario = usuario;
     }
 
@@ -39,20 +42,12 @@ public class Pedido {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public Set<Prato> getPratospedido() {
+        return pratospedido;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Set<Prato> getPratos() {
-        return pratos;
-    }
-
-    public void setPratos(Set<Prato> pratos) {
-        this.pratos = pratos;
+    public void setPratospedido(Set<Prato> pratospedido) {
+        this.pratospedido = pratospedido;
     }
 
     public Usuario getUsuario() {
